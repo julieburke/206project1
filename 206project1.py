@@ -11,12 +11,13 @@ def getData(file):
 #test cases below, but the the data itself will 
 #change (contents and size) in the different test 
 #cases.
-
+	filedata = []
 	#Your code here:
 	with open(file) as f:
 		reader = csv.DictReader(f)
-	for row in reader:
-		print (row)
+		for row in reader:
+			filedata.append(row)
+	return filedata
 
 
 #Sort based on key/column
@@ -25,7 +26,8 @@ def mySort(data,col):
 #Output: Return a string of the form firstName lastName
 
 	#Your code here:
-	pass
+	sorteddata = sorted(data, key = lambda x: x[col])
+	return sorteddata[0]['First'] + ' ' + sorteddata[0]['Last']
 
 #Create a histogram
 def classSizes(data):
