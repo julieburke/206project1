@@ -35,20 +35,24 @@ def classSizes(data):
 # Output: Return a list of tuples ordered by
 # ClassName and Class size, e.g 
 # [('Senior', 26), ('Junior', 25), ('Freshman', 21), ('Sophomore', 18)]
-
-	#Your code here:
-	pass
-
-
+	classsize = {}
+	for x in data:
+		classsize[x['Class']] = classsize.get(x['Class'], 0) + 1
+	return sorted(classsize.items(), key = lambda x: x[1], reverse = True)
 
 # Find the most common day of the year to be born
 def findDay(a):
 # Input: list of dictionaries
 # Output: Return the day of month (1-31) that is the
 # most often seen in the DOB
-
+	daycounts = {}
 	#Your code here:
-	pass
+	for x in a:
+		day = x['DOB'].split('/')[1]
+		daycounts[day] = daycounts.get(day, 0) + 1
+	
+	return int(sorted(daycounts.items(), key = lambda x: x[1], reverse = True)[0][0])
+
 
 
 # Find the average age (rounded) of the Students
