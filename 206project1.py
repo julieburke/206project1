@@ -1,6 +1,8 @@
 import os
 import filecmp
 import csv
+from datetime import date
+from datetime import datetime
 
 def getData(file):
 #Input: file name
@@ -62,16 +64,25 @@ def findAge(a):
 # most often seen in the DOB
 
 	#Your code here:
-	pass
+	ages = []
+	today = date.today()
+	for row in a:
+		born= datetime.strptime(row['DOB'], "%m/%d/%Y")
+		ages.append(today.year - born.year - ((today.month, today.day) < (born.month, born.day)))
+	return round (sum(ages) / len (ages))
+
 
 #Similar to mySort, but instead of returning single
 #Student, all of the sorted data is saved to a csv file.
 def mySortPrint(a,col,fileName):
 #Input: list of dictionaries, key to sort by and output file name
 #Output: None
-
 	#Your code here:
-	pass
+	sorteddata = sorted(a, key = lambda x: x[col])
+	#f = open(fileName,'wb')
+	#w = csv.DictWriter(f,sorteddata.keys())
+	#w.writerow(sorteddata)
+	#f.close()
 
 
 
