@@ -78,11 +78,18 @@ def mySortPrint(a,col,fileName):
 #Input: list of dictionaries, key to sort by and output file name
 #Output: None
 	#Your code here:
-	sorteddata = sorted(a, key = lambda x: x[col])
-	#f = open(fileName,'wb')
-	#w = csv.DictWriter(f,sorteddata.keys())
-	#w.writerow(sorteddata)
-	#f.close()
+	b = []
+	for item in a:
+		newdict = {"First": item["First"], "Last": item["Last"], "Email": item["Email"]}
+		b.append(newdict)
+	sorteddata = sorted(b, key = lambda x: x[col])
+	keys = sorteddata[0].keys()
+	with open(fileName,'w', newline="\n") as output_file:
+		
+		writer = csv.DictWriter(output_file, fieldnames = keys)
+		#writer.writeheader()
+		writer.writerows(sorteddata)
+	output_file.close()
 
 
 
