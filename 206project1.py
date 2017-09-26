@@ -1,3 +1,6 @@
+#Julie Burke
+#Expected score = 200
+# worked with Olivia Gardella on basic concepts 
 import os
 import filecmp
 import csv
