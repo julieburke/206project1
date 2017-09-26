@@ -85,10 +85,12 @@ def mySortPrint(a,col,fileName):
 	sorteddata = sorted(b, key = lambda x: x[col])
 	keys = sorteddata[0].keys()
 	with open(fileName,'w', newline="\n") as output_file:
-		
-		writer = csv.DictWriter(output_file, fieldnames = keys)
+		for person in sorteddata:
+			output_file.write(person["First"] + "," + person["Last"] + "," + person["Email"] +"\n")
+
+		#writer = csv.DictWriter(output_file, fieldnames = keys)
 		#writer.writeheader()
-		writer.writerows(sorteddata)
+		#writer.writerows(sorteddata)
 	output_file.close()
 
 
